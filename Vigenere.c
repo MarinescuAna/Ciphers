@@ -67,7 +67,7 @@ void new_key_generatorVignere() {
 	key[i] = '\0';
 }
 
-int main(void) {
+int Vigenere(void) {
 	FILE* f_input;
 	int in;
 	char temp[MAXMAXSIZE];
