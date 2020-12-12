@@ -170,7 +170,7 @@ void decryptFourSquare()
     }
 }
 
-void ReadTextFourSquare(FILE* f_input) {
+void ReadTextFourSquare(FILE* f_input, int decript) {
 
 	int length = 0, i;
 	char temp_text[1000];
@@ -183,7 +183,7 @@ void ReadTextFourSquare(FILE* f_input) {
 			{
 				readText[length] = tolower(temp_text[i]);
 
-				if (length % 2 == 1 && readText[length - 1] == readText[length])
+				if (length % 2 == 1 && readText[length - 1] == readText[length] && decript!=1)
 				{
 					readText[length] = 'x';
 				}
@@ -200,7 +200,7 @@ void ReadTextFourSquare(FILE* f_input) {
 	readText[length] = '\0';
 }
 
-int FourSquare(void) {
+int main(void) {
 	FILE* f_input;
 	int in;
     char password1[1000], password2[1000];
@@ -228,8 +228,7 @@ int FourSquare(void) {
         printf("key: \n");
 		GenerateKeyTFourSquare(password1,password2);
 
-		ReadTextFourSquare(f_input);
-        toLowerArray(readText);
+		ReadTextFourSquare(f_input, in-1);
 
 		if (in == 1) {
             printf("Encrypted text: ");

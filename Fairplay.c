@@ -131,7 +131,7 @@ void GenerateKeyTFairplay() {
 	}
 }
 
-void ReadText(FILE* f_input) {
+void ReadText(FILE* f_input, int decrypt) {
 
 	int length = 0, i;
 	char temp_text[MAXMAXSIZE];
@@ -144,7 +144,7 @@ void ReadText(FILE* f_input) {
 			{
 				readText[length] = tolower(temp_text[i]);
 
-				if (length % 2 == 1 && readText[length - 1] == readText[length])
+				if (length % 2 == 1 && readText[length - 1] == readText[length] && decrypt!=1)
 				{
 					readText[length] = 'x';
 				}
@@ -182,7 +182,7 @@ int Fairplay(void) {
 
 		GenerateKeyTFairplay();
 
-		ReadText(f_input);
+		ReadText(f_input, in-1);
 
 		if (in == 1) {
 			encryptingFairplay();
